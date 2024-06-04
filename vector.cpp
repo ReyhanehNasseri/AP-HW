@@ -7,7 +7,6 @@ template<typename T>
 class CustomVector{
    private:
       T* values = new int[1];
-   //int i = 0;
    int index = 0;
    int maxSize = 1;
 
@@ -33,14 +32,14 @@ class CustomVector{
    public:
 
 // PUSH BACK
-  void pushback (T a){
+  void pushback (T element){
    if(index < maxSize){
-        values[index] = a;
+        values[index] = element;
     }
     else {
        maxSize = maxSize * 2;
        reallocate(maxSize);
-       values[index]=a;
+       values[index]=element;
     }
     index++;
   }
