@@ -5,7 +5,7 @@ using namespace std;
 template<class T>
 class CustomVector{
    private:
-      T* values = new int[1];
+      T* values = new T[1];
    int index = 0;
    int maxSize = 1;
 
@@ -15,16 +15,17 @@ class CustomVector{
 
   void reallocate(int newSize) {
 
-   T* temp = new int [index];
+   T* temp = new T [index];
 
    for(int i = 0 ; i < index; i++){
     temp[i]= values[i];
    }
-   values = new int [newSize];
+   values = new T [newSize];
 
    for(int i = 0 ; i < index; i++){
     values[i]=temp[i];
    }
+      delete[] temp;
   }
 
 
@@ -88,20 +89,25 @@ class CustomVector{
 
     }
  }
-    
+    ~CustomVector()
+{
+    delete[] values;
+}
 };
 
 
 int main(){
     
     CustomVector<int> vector1;
-    CustomVector<int> vector2;
+    CustomVector<char> vector2;
     vector1.pushback(3);
     vector1.pushback(5);
     vector1.pushback(4);
     vector1.pushback(6);
+    vector2.pushback('c');
     vector1.resize(11,6);
    vector1.print();
+    vector2.print();
    cout<<vector1.size();
    
 
