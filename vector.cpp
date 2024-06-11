@@ -1,9 +1,8 @@
 #include<iostream>
-#include <algorithm>
 using namespace std;
 
 
-template<typename T>
+template<class T>
 class CustomVector{
    private:
       T* values = new int[1];
